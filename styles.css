@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.datetime {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#current-time, #current-timestamp {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.command-section {
+    margin-bottom: 20px;
+}
+
+.command-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.action-button {
+    background-color: #0084ff; /* Messenger blue */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.action-button:hover {
+    background-color: #006bbf;
+}
+
+.command-inputs {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+input[type="number"], select {
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    flex-grow: 1;
+}
+
+/* Ajoutez ceci pour restreindre la taille des champs de saisie */
+input[type="number"][placeholder="ID Sender"] {
+    width: 60px; /* Largeur fixe pour les champs de saisie avec placeholder "ID Sender" */
+}
+
+/* Ajoutez ceci pour restreindre la taille des sélecteurs info_type */
+select[id^="info_type"] {
+    width: 100px; /* Largeur fixe pour les sélecteurs info_type */
+}
+
+.messages-section {
+    margin-top: 20px;
+}
+
+.messages {
+    height: 150px; /* Set a fixed height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column; /*-reverse; Display the newest messages at the top */
+}
+
+.message {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 5px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+/* Styles conditionnels pour les messages */
+.destination-reach {
+    color: red;
+}
+
+.test-message {
+    color: blue;
+}

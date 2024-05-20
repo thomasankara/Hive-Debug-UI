@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Command Interface</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="app.js" defer></script> <!-- Utilisation de defer -->
+</head>
+<body>
+    <div class="container">
+        <div class="datetime">
+            <div class="label">Current Date and Time: <span id="currentDateTime"></span></div>
+            <div class="label">Current Timestamp (ms): <span id="currentTimestamp"></span></div>
+        </div>
+
+        <div class="command">
+            <div class="command-inputs">
+                <button class="action-button" onclick="startActivity()">INT_START_ACTIVITY</button>
+                <input type="number" id="id_sender" placeholder="ID Sender" oninput="updateSenderId(this.value)">
+                <select id="info_type">
+                    <option value="si">SI</option>
+                    <option value="ds">DS</option>
+                </select>
+            </div>
+
+            <div class="command-inputs">
+                <button class="action-button" onclick="pauseActivity()">INT_PAUSE_ACTIVITY</button>
+                <input type="number" id="id_sender_pause" placeholder="ID Sender" oninput="updateSenderId(this.value)">
+                <select id="info_type_pause">
+                    <option value="si">SI</option>
+                    <option value="ds">DS</option>
+                </select>
+            </div>
+
+            <div class="command-inputs">
+                <button class="action-button" onclick="unpauseActivity()">INT_UNPAUSE_ACTIVITY</button>
+                <input type="number" id="id_sender_unpause" placeholder="ID Sender" oninput="updateSenderId(this.value)">
+                <select id="info_type_unpause">
+                    <option value="si">SI</option>
+                    <option value="ds">DS</option>
+                </select>
+            </div>
+
+            <div class="command-inputs">
+                <button class="action-button" onclick="abortActivity()">INT_ABORT_ACTIVITY</button>
+                <input type="number" id="id_sender_abort" placeholder="ID Sender" oninput="updateSenderId(this.value)">
+                <select id="info_type_abort">
+                    <option value="si">SI</option>
+                    <option value="ds">DS</option>
+                </select>
+            </div>
+
+            <div class="command-inputs">
+                <button class="action-button" onclick="addCoworker()">INT_ADD_COWORKER</button>
+                <input type="number" id="id_sender_coworker" placeholder="ID Sender" oninput="updateSenderId(this.value)">
+                <input type="number" id="new_coworker_id" placeholder="New Coworker ID">
+            </div>
+
+            <div class="command-inputs">
+                <button class="action-button" onclick="pausePlusActivity()">INT_PAUSE_PLUS_ACTIVITY</button>
+                <input type="number" id="id_sender_pause_plus" placeholder="ID Sender" oninput="updateSenderId(this.value)">
+                <select id="info_type_pause_plus">
+                    <option value="si">SI</option>
+                    <option value="ds">DS</option>
+                </select>
+                <input type="number" id="info1_pause_plus" placeholder="Info 1">
+                <input type="number" id="info2_pause_plus" placeholder="Info 2">
+            </div>
+
+            <div class="command-inputs">
+                <button class="action-button" onclick="getActivityList()">DBG_GET_ACTIVITY_LIST</button>
+            </div>
+
+            <div class="command-inputs">
+                <button class="action-button" onclick="getEventList()">DBG_GET_EVENT_LIST</button>
+            </div>
+
+            <div class="command-inputs">
+                <button class="action-button" onclick="getCoworkerList()">DBG_GET_COWORKER_LIST</button>
+            </div>
+
+            <div class="command-inputs">
+                <button class="action-button" onclick="addActivity()">INT_ADD_ACTIVITY</button>
+                <input type="number" id="id_sender_add_activity" placeholder="ID Sender" oninput="updateSenderId(this.value)">
+                <select id="info_type">
+                    <option value="si">SI</option>
+                    <option value="ds">DS</option>
+                </select>
+                <select id="activityType">
+                    <option value="WAITING">WAITING</option>
+                    <option value="GOTO">GOTO</option>
+                    <option value="MANUAL">MANUAL</option>
+                </select>
+                <select id="activityInfo">
+                    <option value="GOTO_TO_WAITING_POINT">GOTO_TO_WAITING_POINT</option>
+                </select>
+                <input type="text" id="info1" placeholder="coordonne x/y/z/r/p/yaw">
+                <input type="text" id="info2" placeholder="timestamp">
+            </div>
+        </div>
+
+        <div class="messages-section">
+            <h3>Messages from OUT_COWORKER_HFM</h3>
+            <div id="messages" class="messages"></div>
+        </div>
+    </div>
+</body>
+</html>
